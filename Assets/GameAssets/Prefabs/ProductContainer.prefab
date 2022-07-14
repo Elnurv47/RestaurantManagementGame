@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1964216498554440661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1964216498554440662}
+  - component: {fileID: 1964216498554440663}
+  m_Layer: 0
+  m_Name: ProductContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1964216498554440662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964216498554440661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 470.0778, y: 254.43295, z: -201.69507}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1964216498554440663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964216498554440661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28a0ab944fca0d4785d74c4091174ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Products:
+  - _price: 5
+    _data:
+      _id: 1
+      _name: Red Apple
+      _description: Red Apple
+      _sprite: {fileID: 21300000, guid: 2acccf4ba3f68ef4891b768b01de2a1a, type: 3}
+      _type: 1
+    _category:
+      _type: 0
+  - _price: 10
+    _data:
+      _id: 0
+      _name: Green Apple
+      _description: Green Apple
+      _sprite: {fileID: 21300000, guid: 4384942ee38a9214390ae567d4b24da7, type: 3}
+      _type: 2
+    _category:
+      _type: 1
+  - _price: 15
+    _data:
+      _id: 2
+      _name: Yellow Apple
+      _description: Yellow Apple
+      _sprite: {fileID: 21300000, guid: bcd82f36489220d4ea844598b920a608, type: 3}
+      _type: 3
+    _category:
+      _type: 2
+  - _price: 8
+    _data:
+      _id: 3
+      _name: Red Cheery
+      _description: Red Cheery
+      _sprite: {fileID: 21300000, guid: 6eb69377955940542a26a0bf53baad4c, type: 3}
+      _type: 4
+    _category:
+      _type: 0
+  - _price: 12
+    _data:
+      _id: 4
+      _name: Green Cheery
+      _description: Green Cheery
+      _sprite: {fileID: 21300000, guid: d102e7631ae80394d990b3f6bcd648ba, type: 3}
+      _type: 5
+    _category:
+      _type: 1
+  - _price: 16
+    _data:
+      _id: 5
+      _name: Yellow Cheery
+      _description: Yellow Cheery
+      _sprite: {fileID: 21300000, guid: a5992c8e0ac1257499355239e35badcf, type: 3}
+      _type: 6
+    _category:
+      _type: 2

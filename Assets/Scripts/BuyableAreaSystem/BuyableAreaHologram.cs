@@ -37,13 +37,13 @@ public class BuyableAreaHologram : MonoBehaviour
 
     public void TryBuy()
     {
-        if (_areaBuyCondition.IsAcceptable(GameManager.Instance.Player.Money))
+        if (_areaBuyCondition.IsAcceptable(GameManager.Instance.Player.GetCoinAmount()))
         {
             QuestionDialogUI.Instance.AskQuestion($"Do you want to buy this area for {_areaPrice} ?", () =>
             {
-                GameManager.Instance.Player.Money -= _areaPrice;
+                int newCoinAmount = GameManager.Instance.Player.GetCoinAmount() - _areaPrice;
+                GameManager.Instance.Player.SetCoinAmount(newCoinAmount);
                 OnAreaIsBuyable?.Invoke(this);
-                Debug.Log("Here");
             },
             () => { }
             );

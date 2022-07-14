@@ -1,3 +1,4 @@
+using ShopSystem;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    [SerializeField] private Player _player;
-    public Player Player { get => _player; }
+    [SerializeField] private PlayerShopController _player;
+    public PlayerShopController Player { get => _player; }
 }

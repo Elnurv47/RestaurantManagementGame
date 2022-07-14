@@ -21,18 +21,18 @@ namespace GridSystem
 
         private void Start()
         {
-            UpdateColorBasedOnUsableness();
+            ToggleVisualBasedOnUsableness();
         }
 
         public void SetUsable(bool isUsable)
         {
             _isUsable = isUsable;
-            UpdateColorBasedOnUsableness();
+            ToggleVisualBasedOnUsableness();
         }
 
-        private void UpdateColorBasedOnUsableness()
+        private void ToggleVisualBasedOnUsableness()
         {
-            _renderer.material.color = _isUsable ? Color.white : Color.gray;
+            _renderer.enabled = _isUsable;
         }
 
         public override string ToString()

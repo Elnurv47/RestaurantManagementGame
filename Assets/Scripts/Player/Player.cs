@@ -16,9 +16,7 @@ public class Player : MonoBehaviour
         get => _money; 
         set
         {
-            Debug.Log("value: " + value);
             _money = value;
-            Debug.Log("money: " + _money);
             OnMoneyChanged?.Invoke(_money);
         }
     }

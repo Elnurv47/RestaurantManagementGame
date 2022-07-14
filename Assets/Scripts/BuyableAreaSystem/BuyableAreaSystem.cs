@@ -9,7 +9,7 @@ public class BuyableAreaSystem : MonoBehaviour
     [SerializeField] private float _areaXZScale;
     [SerializeField] private float _areaYScale;
     [SerializeField] private Area _areaPrefab;
-    [SerializeField] private Transform _areaParentTransform;
+    [SerializeField] private Transform _areaContainer;
     [SerializeField] private BuyableAreaHologram _buyableAreaHologramPrefab;
     [SerializeField] private GridXZ _gridXZ;
 
@@ -17,7 +17,7 @@ public class BuyableAreaSystem : MonoBehaviour
 
     private void Start()
     {
-        Area boughtArea = Instantiate(_areaPrefab, _gridXZ.GetGridCenterPosition(), Quaternion.identity, _areaParentTransform);
+        Area boughtArea = Instantiate(_areaPrefab, _gridXZ.GetGridCenterPosition(), Quaternion.identity, _areaContainer);
         boughtArea.Scale(new Vector3(_areaXZScale, _areaYScale, _areaXZScale));
         boughtArea.Init(_gridXZ);
 
@@ -52,7 +52,7 @@ public class BuyableAreaSystem : MonoBehaviour
 
     public void BuyArea(BuyableAreaHologram buyableAreaHologram)
     {
-        Area boughtArea = Instantiate(_areaPrefab, buyableAreaHologram.transform.position, Quaternion.identity, _areaParentTransform);
+        Area boughtArea = Instantiate(_areaPrefab, buyableAreaHologram.transform.position, Quaternion.identity, _areaContainer);
         boughtArea.Scale(new Vector3(_areaXZScale, _areaYScale, _areaXZScale));
         boughtArea.Init(_gridXZ);
 
@@ -100,13 +100,16 @@ public class BuyableAreaSystem : MonoBehaviour
     {
         Vector3 halfExtents = new Vector3(_areaXZScale - 0.1f, _areaYScale - 0.1f, _areaXZScale - 0.1f) / 2;
         Collider[] colliders = Physics.OverlapBox(center, halfExtents);
-        colliders = colliders.Where(collider => collider.GetComponent<Area>() != null).ToArray();
+        colliders = colliders.Where(
+            collider => collider.GetComponent<Area>() != null || 
+            collider.GetComponent<BuyableAreaHologram>() != null)
+            .ToArray();
         return colliders.Length > 0;
     }
 
     private void SpawnBuyableAreaHologram(Vector3 position)
     {
-        BuyableAreaHologram spawnedBuyableAreaHologram = Instantiate(_buyableAreaHologramPrefab, position, Quaternion.identity, _areaParentTransform);
+        BuyableAreaHologram spawnedBuyableAreaHologram = Instantiate(_buyableAreaHologramPrefab, position, Quaternion.identity, _areaContainer);
         spawnedBuyableAreaHologram.OnAreaIsBuyable += SpawnedBuyableAreaHologram_OnAreaIsBuyable;
     }
 
@@ -119,7 +122,7 @@ public class BuyableAreaSystem : MonoBehaviour
     {
         if (keyCode == KeyCode.E)
         {
-            _areaParentTransform.gameObject.SetActive(!_areaParentTransform.gameObject.activeSelf);
+            _areaContainer.gameObject.SetActive(!_areaContainer.gameObject.activeSelf);
         }
     }
 
