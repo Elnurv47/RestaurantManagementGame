@@ -9,6 +9,7 @@ namespace GridSystem
         int Length { get; }
         Vector3 GetNodePosition(GridIndex point);
         Vector3 GetNodeCenter(GridIndex point);
+        Vector3 GetNodeCenter(Vector3 worldPosition);
         Node GetNode(Vector3 cellWorldPosition);
         void SetNode(Vector3 cellWorldPosition, Node gridObject);
         TextMesh[,] GetDebugArray();

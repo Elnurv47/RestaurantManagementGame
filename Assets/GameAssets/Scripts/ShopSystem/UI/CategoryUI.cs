@@ -37,7 +37,6 @@ namespace ShopSystem
 
         private void Start()
         {
-            Debug.Log("CategoryUI");
             _productUIContainer = _productUIArea.Find("ProductUIContainer");
         }
 

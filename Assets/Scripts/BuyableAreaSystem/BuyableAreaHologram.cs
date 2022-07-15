@@ -54,4 +54,9 @@ public class BuyableAreaHologram : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void Scale(Vector3 scaleVector)
+    {
+        gameObject.transform.localScale = scaleVector;
+    }
 }

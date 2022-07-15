@@ -27,14 +27,17 @@ public class BuyableAreaSystem : MonoBehaviour
 
         SpawnBuyableAreaHologramsAround(boughtArea);
 
-        InputManager.OnKeyPressed += InputManager_OnKeyPressed;
-
         _gridXZ.OnGridActivated += GridXZ_OnGridActivated;
         _gridXZ.OnGridDeactivated += GridXZ_OnGridDeactivated;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _areaContainer.gameObject.SetActive(!_areaContainer.gameObject.activeSelf);
+        }
+
         if (!Input.GetMouseButtonDown(0)) return;
 
         if (EventSystem.current.IsPointerOverGameObject()) return;
@@ -110,20 +113,13 @@ public class BuyableAreaSystem : MonoBehaviour
     private void SpawnBuyableAreaHologram(Vector3 position)
     {
         BuyableAreaHologram spawnedBuyableAreaHologram = Instantiate(_buyableAreaHologramPrefab, position, Quaternion.identity, _areaContainer);
+        spawnedBuyableAreaHologram.Scale(new Vector3(_areaXZScale, _areaYScale, _areaXZScale));
         spawnedBuyableAreaHologram.OnAreaIsBuyable += SpawnedBuyableAreaHologram_OnAreaIsBuyable;
     }
 
     private void SpawnedBuyableAreaHologram_OnAreaIsBuyable(BuyableAreaHologram buyableAreaHologram)
     {
         BuyArea(buyableAreaHologram);
-    }
-
-    private void InputManager_OnKeyPressed(KeyCode keyCode)
-    {
-        if (keyCode == KeyCode.E)
-        {
-            _areaContainer.gameObject.SetActive(!_areaContainer.gameObject.activeSelf);
-        }
     }
 
     private void GridXZ_OnGridActivated()

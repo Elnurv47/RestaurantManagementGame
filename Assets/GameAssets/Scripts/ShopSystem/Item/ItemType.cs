@@ -12,6 +12,8 @@ namespace ShopSystem
         RedCherry,
         GreenCheery,
         YellowCheery,
+        Table,
+        Chair
     }
 
 }

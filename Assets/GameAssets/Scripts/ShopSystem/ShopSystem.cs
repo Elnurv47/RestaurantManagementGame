@@ -43,7 +43,6 @@ namespace ShopSystem
 
         private void Start()
         {
-            Debug.Log("ShopSystem");
             FetchCategoriesFromScene();
             List<Product> products = FetchAllProducts();
             products.ForEach(product => AddProduct(product));
@@ -52,6 +51,11 @@ namespace ShopSystem
         public void OnToggleShopUIButtonClicked()
         {
             gameObject.SetActive(!gameObject.activeSelf);
+        }
+
+        public void ToggleShopUI(bool active)
+        {
+            gameObject.SetActive(active);
         }
 
         /// <summary>

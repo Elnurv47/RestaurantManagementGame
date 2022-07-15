@@ -5,14 +5,9 @@ public class Testing : MonoBehaviour
 {
     [SerializeField] private GridXZ grid;
 
-    private void Start()
+    private void Update()
     {
-        InputManager.OnKeyPressed += InputManager_OnKeyPressed;
-    }
-
-    private void InputManager_OnKeyPressed(KeyCode keyCode)
-    {
-        if (keyCode == KeyCode.E)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             grid.SetActive(!grid.ActiveSelf);
         }

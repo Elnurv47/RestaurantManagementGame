@@ -26,6 +26,12 @@ namespace ShopSystem
         /// </summary>
         [SerializeField] private Category _category;
         public Category Category { get => _category; }
+        
+        /// <summary>
+        /// Model Prefab
+        /// </summary>
+        [SerializeField] private GameObject _model;
+        public GameObject Model { get => _model; }
     }
 
 }

@@ -19,6 +19,11 @@ namespace ShopSystem
         private IShopCustomer _shopCustomer;
 
         /// <summary>
+        /// A reference to shop system
+        /// </summary>
+        private ShopSystem _shopSystem;
+
+        /// <summary>
         /// A text object to display header
         /// </summary>
         [SerializeField] private Text _headerText;
@@ -40,7 +45,8 @@ namespace ShopSystem
 
         private void Start()
         {
-            _shopCustomer = GetComponentInParent<ShopSystem>().ShopCustomer;
+            _shopSystem = GetComponentInParent<ShopSystem>();
+            _shopCustomer = _shopSystem.ShopCustomer;
             _shopCustomer.OnCoinChanged += ShopCustomer_OnCoinChanged;
         }
 
@@ -79,6 +85,7 @@ namespace ShopSystem
         public void OnBuyButtonClicked()
         {
             _shopCustomer.HandleBoughtProduct(_product);
+            _shopSystem.ToggleShopUI(false);
         }
     }
 

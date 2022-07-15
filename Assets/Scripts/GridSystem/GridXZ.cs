@@ -1,8 +1,8 @@
+using Utils;
+using System;
 using System.Linq;
 using UnityEngine;
-using FactoryGame.Utils;
 using System.Collections.Generic;
-using System;
 
 namespace GridSystem
 {
@@ -47,7 +47,7 @@ namespace GridSystem
                         GridIndex gridIndex = new GridIndex(x, 0, z);
 
                         GameObject spawnedNodeObject = Instantiate(_nodePrefab, GetNodeCenter(gridIndex), Quaternion.Euler(90, 0, 0), _nodeContainer);
-                        spawnedNodeObject.transform.localScale = new Vector3(_cellSize - 0.1f, _cellSize - 0.1f, 1);
+                        spawnedNodeObject.transform.localScale = new Vector3(_cellSize - 0.1f, _cellSize - 0.1f, 0.001f);
                         Node spawnedNode = spawnedNodeObject.GetComponent<Node>();
 
                         SetNode(gridIndex, spawnedNode);
@@ -101,6 +101,17 @@ namespace GridSystem
 
             Vector3 offset = new Vector3(1, 0, 1) * _cellSize * 0.5f;
             return gridIndex.ToVector3() * _cellSize + offset + _origin;
+        }
+
+        public Vector3 GetNodeCenter(Vector3 worldPosition)
+        {
+            GridIndex gridIndex = GetGridIndex(worldPosition);
+            return GetNodeCenter(gridIndex);
+        }
+
+        public Vector3 GetNodeCenter(Node node)
+        {
+            return GetNodeCenter(node.GridIndex);
         }
 
         public void SetNode(Vector3 cellWorldPosition, Node node)

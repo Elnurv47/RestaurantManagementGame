@@ -7,7 +7,8 @@
     {
         Red,
         Green,
-        Yellow
+        Yellow,
+        Furniture
     }
 
 }

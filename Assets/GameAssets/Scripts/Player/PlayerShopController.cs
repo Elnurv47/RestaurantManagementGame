@@ -11,7 +11,7 @@ namespace ShopSystem
         /// <summary>
         /// Player's coin
         /// </summary>
-        private int _coinAmount = 200;
+        [SerializeField] private int _coinAmount = 200;
 
         /// <summary>
         /// A reference to the Shop system
@@ -68,8 +68,6 @@ namespace ShopSystem
             _coinAmount -= product.Price;
             OnCoinChanged?.Invoke(_coinAmount);
             OnProductBought?.Invoke(product);
-
-            Debug.Log("Product Bought: " + product.ItemData.Name);
         }
 
         /// <summary>

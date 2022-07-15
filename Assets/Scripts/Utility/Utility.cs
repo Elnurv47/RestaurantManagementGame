@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FactoryGame.Utils
+namespace Utils
 {
     public static class Utility
     {
@@ -36,7 +36,7 @@ namespace FactoryGame.Utils
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.PositiveInfinity)) 
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.PositiveInfinity))
             {
                 return hitInfo.point;
             }
